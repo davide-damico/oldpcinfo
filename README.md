@@ -7,6 +7,7 @@ Software per reperire informazioni su una vecchia installazione di Windows su di
 ## Come usare il software
 1. Scarica l'ultima verisone e compilalo. Trovi le istruzioni su [https://www.autoitscript.com/autoit3/docs/intro/compiler.htm](https://www.autoitscript.com/autoit3/docs/intro/compiler.htm)
 2. Esegui oldpcinfo.exe
+3. Indicare con quale lettera viene visto il disco della vecchia installazione d icui volete informazioni
 
 ## Screenshot
 ![oldpcinfo](screenshot.png)
