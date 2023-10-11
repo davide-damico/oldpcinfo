@@ -12,7 +12,7 @@ Software per reperire informazioni su una vecchia installazione di Windows su di
 ![oldpcinfo](screenshot.jpg)
 
 ## Download
-[Click here](https://github.com/davide-damico/oldpcinfo/releases/latest) per scaricare l'ultima versione!
+[Clicca qui](https://github.com/davide-damico/oldpcinfo/releases/latest) per scaricare l'ultima versione!
 
 ## Author
 Davide D'Amico - Pescara (https://www.novasoftonline.net)
