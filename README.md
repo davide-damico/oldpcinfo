@@ -9,7 +9,7 @@ Software per reperire informazioni su una vecchia installazione di Windows su di
 2. Esegui oldpcinfo.exe
 
 ## Screenshot
-![oldpcinfo](screenshot.jpg)
+![oldpcinfo](screenshot.png)
 
 ## Download
 [Clicca qui](https://github.com/davide-damico/oldpcinfo/releases/latest) per scaricare l'ultima versione!
