@@ -3,7 +3,7 @@
 #include <GUIConstantsEx.au3>
 #RequireAdmin
 
-$vOldPC = InputBox("OldPcInfo - v. 1.0", "Utility per leggere le configurazioni di una installazione Windows OffLine. " & @CRLF & @CRLF &  "by Davide D'Amico. " & @CRLF & @CRLF & "Inseirire lettera drive di Windows:", "C:")
+$vOldPC = InputBox("OldPcInfo - v. 1.1", "Utility per leggere le configurazioni di una installazione Windows OffLine. " & @CRLF & @CRLF &  "by Davide D'Amico. " & @CRLF & @CRLF & "Inseirire lettera drive di Windows:", "C:")
 If @Error Then Exit
 $vOldPC = StringLeft($vOldPC, 1) & ":"
 
@@ -15,7 +15,6 @@ $label = GUICtrlCreateLabel("Attendere. Sto elaborando...", 10, 10, 210)
 GUICtrlSetColor(-1, 32250)
 GUISetState()
 
-
 ;Se voglio vedere il mio C: devo seguire una strada diversa
 If $vOldPC = "C:" Then
 
@@ -26,8 +25,13 @@ If $vOldPC = "C:" Then
    ;Nome del PC
    $sOldPCName = RegRead("HKLM\System\ControlSet001\Control\ComputerName\ComputerName", "ComputerName")
    FileWriteLine($hFileOpen, "Nome PC: " & $sOldPCName & @CRLF & @CRLF)
-
-
+      
+   ;Windows Edition
+   $sProductName = RegRead("HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName")
+   $sDisplayVersion = RegRead("HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "DisplayVersion")
+   
+   FileWriteLine($hFileOpen, "Versione Windows: " & $sProductName & " (" & $sDisplayVersion & ")" & @CRLF & @CRLF)
+   
    FileWriteLine($hFileOpen, "===============================Connessioni di Rete===============================" & @CRLF & @CRLF)
 
    GUICtrlSetState ($progressbar,$GUI_SHOW)
@@ -154,8 +158,6 @@ Run(@ComSpec & " /c reg.exe load HKLM\OldSystem " & $vOldPC & "\Windows\System32
 Sleep(1000)
 Run(@ComSpec & " /c reg.exe load HKLM\OldSoftware " & $vOldPC & "\Windows\System32\Config\software","",@SW_HIDE)
 Sleep(1000)
-Run(@ComSpec & " /c reg.exe load HKLM\OldSoftware " & $vOldPC & "\Windows\System32\Config\software","",@SW_HIDE)
-Sleep(1000)
 
 ;Metto tutto su un file Report
 _FileCreate(@DesktopDir & "\OldPCInfo.txt")
@@ -164,6 +166,12 @@ $hFileOpen = FileOpen(@DesktopDir & "\OldPCInfo.txt", $FO_OVERWRITE)
 ;Nome del PC
 $sOldPCName = RegRead("HKLM\OldSystem\ControlSet001\Control\ComputerName\ComputerName", "ComputerName")
 FileWriteLine($hFileOpen, "Nome PC: " & $sOldPCName & @CRLF & @CRLF)
+
+;Windows Edition
+$sProductName = RegRead("HKLM\OldSoftware\Microsoft\Windows NT\CurrentVersion", "ProductName")
+$sDisplayVersion = RegRead("HKLM\OldSoftware\Microsoft\Windows NT\CurrentVersion", "DisplayVersion")
+   
+FileWriteLine($hFileOpen, "Versione Windows: " & $sProductName & " (" & $sDisplayVersion & ")" & @CRLF & @CRLF)
 
 FileWriteLine($hFileOpen, "===============================Connessioni di Rete===============================" & @CRLF & @CRLF)
 
